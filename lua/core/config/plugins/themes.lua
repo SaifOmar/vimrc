@@ -1,4 +1,5 @@
 require("rose-pine").setup({
+	disable_background = true,
 	variant = "moon",
 	styles = {
 		transparency = true,
@@ -6,6 +7,11 @@ require("rose-pine").setup({
 		bold = false
 	}
 })
+-- to set background to full black -- needs to disable background tho
+local set_black_bg = function(group)
+  vim.api.nvim_set_hl(0, group, { bg = "#000000", ctermbg = 0 })
+end
+
 require("onedarkpro").setup({
 	colors = {},       -- Override default colors or create your own
 	highlights = {},   -- Override default highlight groups or create your own
@@ -102,20 +108,6 @@ require("onedarkpro").setup({
 		highlight_inactive_windows = true, -- When the window is out of focus, change the normal background?
 	}
 })
--- require("onedark").setup({
--- 	variant = "darker",
--- 	transparent = true,
--- 	term_colors = true,
--- 	code_style = {
--- 		comments = 'italic',
--- 		keywords = 'italic',
--- 		functions = 'none',
--- 		strings = 'none',
--- 		variables = 'italic'
--- 	}
--- }
--- )
-
 require("tokyodark").setup({
 	opts = {
 		transparent_background = true,
@@ -157,11 +149,9 @@ require('vscode').setup({
 	}
 })
 
-
-
-
-
-vim.cmd.colorscheme "onedark"
+-- vim.cmd.colorscheme "onedark"
+-- vim.cmd.colorscheme "tokyonight"
+vim.cmd.colorscheme "rose-pine"
 -- vim.cmd.colorscheme "vscode"
 -- vim.cmd.colorscheme "tokyodark"
 -- vim.cmd.colorscheme "habamax"

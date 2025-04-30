@@ -21,7 +21,7 @@ lspconfig.gopls.setup({
 		},
 	},
 })
-
+-- Intelephense configuration with diagnostics enabled
 lspconfig.intelephense.setup {
 	root_dir = require('lspconfig').util.root_pattern(
 		"composer.json",
@@ -32,12 +32,14 @@ lspconfig.intelephense.setup {
 	settings = {
 		intelephense = {
 			files = {
-				maxSize = 5000000,
-				associations = { "*.php", "*.phtml", "*.inc", "*.module", "*.install", "*.theme",
+				maxSize = 50000000,
+				associations = {
+					"*.php", "*.phtml", "*.inc", "*.module", "*.install", "*.theme",
 					"_ide_helper.php", "_ide_helper_models.php", ".phpstorm.meta.php"
 				},
 			},
 			environment = {
+				phpVersion = '8.1.0',
 				includePaths = { './vendor' }
 			},
 			stubs = {
@@ -50,14 +52,75 @@ lspconfig.intelephense.setup {
 				"sysvsem", "sysvshm", "tidy", "tokenizer", "xml", "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache",
 				"zip", "zlib", "laravel"
 			},
-			completionProvider = {
+			completion = {
+				insertUseDeclaration = true,
+				fullyQualifyGlobalConstantsAndFunctions = false,
+				maxItems = 100,
 				resolveProvider = true
 			},
-			diagnostics = {
+			format = {
 				enable = true
+			},
+			diagnostics = {
+				enable = true,
+				run = "onType"
 			},
 			telemetry = {
 				enable = false
+			}
+		}
+	}
+}
+
+-- Phpactor configuration with diagnostics disabled but completion enabled
+lspconfig.phpactor.setup {
+	root_dir = require('lspconfig').util.root_pattern(
+		"composer.json",
+		"package.json",
+		".git",
+		"*.php"
+	),
+	init_options = {
+		["language_server_phpstan.enabled"] = false,
+		["language_server_psalm.enabled"] = false,
+		["language_server.catch_errors"] = false, -- Disable diagnostics on update
+		["language_server.diagnostics_on_update"] = false, -- Disable diagnostics on update
+		["language_server.diagnostics_on_open"] = false,
+		["language_server.diagnostics_on_save"] = false, -- Disable diagnostics on save
+		["language_server.diagnostic_providers"] = {},
+		["code_transform.import_globals"] = true,
+		["indexer.include_patterns"] = {
+			"**/*.php",
+			"**/*.phtml",
+			"**/*.inc",
+			"**/*.module",
+			"**/*.install",
+			"**/*.theme",
+			"**/_ide_helper.php",
+			"**/_ide_helper_models.php",
+			"**/.phpstorm.meta.php"
+		},
+	},
+}
+
+
+
+lspconfig.intelephense.setup {
+	root_dir = require('lspconfig').util.root_pattern(
+		"composer.json",
+		"package.json",
+		".git",
+		"*.php"
+	),
+	settings = {
+		intelephense = {
+			files = {
+				excludes = {
+					-- Critical for WSL/Low RAM
+					"**/vendor/**", -- PHP dependencies
+					"**/node_modules/**", -- JS dependencies
+					"**/storage/**", -- Laravel logs/cache
+				}
 			}
 		}
 	}

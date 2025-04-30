@@ -16,46 +16,49 @@ require("lazy").setup({
 	},
 
 	require('core.plugins.oil-nvim'),
+	require('core.plugins.copilot-chat'),
+	require('core.plugins.trouble'),
 	require('core.config.plugins.noegen'),
-	-- require('core.plugins.nvim-spider'),
 	require('core.plugins.treesitter-playground'),
 	require('core.plugins.dadbod'),
 	require('core.plugins.laravel-ide-helper'),
 	require('core.plugins.auto-session'),
 	require('core.plugins.harpoon'),
 	require('core.plugins.which-key'),
-	{ "olimorris/onedarkpro.nvim" },
-
-
-	{ "github/copilot.vim",       enabled = false },
-	-- { 'navarasu/onedark.nvim' },
-	{ "tpope/vim-fugitive" },
-
+	-- require('core.plugins.kulala-nvim'),
 	require("core.plugins.telescope"),
+	require("core.plugins.lau-line"),
+	require("core.plugins.buffer-line"),
+	require("core.plugins.lazydev"),
+	require("core.plugins.nvim-lsp-config"),
+	require('core.plugins.conform'),
+	require('core.plugins.cmp'),
+	require('core.plugins.todo-comments'),
+	require('core.plugins.mini-nvim'),
+	require('core.plugins.nvim-treesitter'),
+	require('core.plugins.venv-selector'),
+	require('core.plugins.blade-treesitter'),
+	require('core.plugins.nvim-tree'),
+	require('core.plugins.neo-test'),
+	-- require('core.plugins.neo-tree'),
+	require 'kickstart.plugins.lint',
+	require("kickstart.plugins.autopairs"),
+	-- require 'kickstart.plugins.indent_line',
 
-
+	{ "numToStr/Comment.nvim" },
+	{ "Bilal2453/luvit-meta",     lazy = true },
+	{ "akinsho/toggleterm.nvim",  version = "*",      config = true },
+	{ "folke/neoconf.nvim" }, -- plugin to manage global and project-local settings.
+	{ "theprimeagen/vim-be-good" },
+	{ "github/copilot.vim",       enabled = true },
+	{ "tpope/vim-fugitive" },
 	{ "Mofiqul/vscode.nvim" },
 	{ "ellisonleao/gruvbox.nvim" },
 	{ "sainnhe/gruvbox-material" },
 	{ "tiagovla/tokyodark.nvim" },
-	{ "rose-pine/neovim",        name = "rose-pine" },
-	{ "catppuccin/nvim",         name = "catppuccin" },
-
-	require("core.plugins.lau-line"),
-	require("core.plugins.buffer-line"),
-
-	{ "akinsho/toggleterm.nvim", version = "*", config = true },
-	{ "folke/neoconf.nvim" }, -- plugin to manage global and project-local settings.
-
-	-- LSP Plugins
-	require("core.plugins.lazydev"),
-	{ "Bilal2453/luvit-meta", lazy = true },
-	require("core.plugins.nvim-lsp-config"),
-	{ "numToStr/Comment.nvim" },
-	require('core.plugins.conform')
-	,
-	require('core.plugins.cmp')
-	,
+	{ "olimorris/onedarkpro.nvim" },
+	{ "rose-pine/neovim",         name = "rose-pine" },
+	{ "catppuccin/nvim",          name = "catppuccin" },
 
 	{ -- You can easily change to a different colorscheme.
 		-- Change the name of the colorscheme plugin below, and then
@@ -74,20 +77,7 @@ require("lazy").setup({
 			-- vim.cmd.hi("Comment gui=none")
 		end,
 	},
-
-	require('core.plugins.todo-comments'),
-	require('core.plugins.mini-nvim'),
-	require('core.plugins.nvim-treesitter'),
-	require('core.plugins.venv-selector'),
-	require('core.plugins.blade-treesitter'),
-
-	require('core.plugins.nvim-tree'),
-	require('core.plugins.neo-test'),
-	-- require('core.plugins.neo-tree'),
-
-	-- require 'kickstart.plugins.indent_line',
-	require 'kickstart.plugins.lint',
-	require("kickstart.plugins.autopairs"),
+	-- { 'navarasu/onedark.nvim' },
 
 }, {
 	ui = {

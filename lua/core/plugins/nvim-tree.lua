@@ -8,7 +8,7 @@ return {
 		filters = { dotfiles = false },
 		disable_netrw = false,
 		hijack_cursor = true,
-		sync_root_with_cwd = true,
+		sync_root_with_cwd = false,
 		update_focused_file = {
 			enable = true,
 			update_root = false,

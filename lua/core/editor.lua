@@ -116,8 +116,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
 		vim.diagnostic.open_float(nil, {
 			focusable = false,
 			border = "rounded",
-			-- source = "always",
-			scope = "line",
+			source = "always",
 			header = "",
 			prefix = "",
 		})
@@ -132,3 +131,26 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.expandtab = true
 	end,
 })
+
+-- this is a custom command to find my wezterm config fast
+
+
+local OpenWeztermConfig = function()
+	local path = ''
+	local is_wsl = vim.fn.has("wsl") == 1
+	if is_wsl then
+		path = "/mnt/c/Users/saife/.wezterm.lua"
+	else
+		path = "C:\\Users\\saife\\.wezterm.lua"
+	end
+
+	local buf = vim.fn.bufadd(path)
+	vim.fn.bufload(buf)
+
+	local window = require("core.config.plugins.window")
+	local todo_window = window.open_floating_win({
+		buf = buf,
+	})
+	return todo_window
+end
+vim.api.nvim_create_user_command("WeztermConfig", OpenWeztermConfig, {})
