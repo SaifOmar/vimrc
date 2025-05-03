@@ -3,13 +3,13 @@ require("rose-pine").setup({
 	variant = "moon",
 	styles = {
 		transparency = true,
-		italic = false,
-		bold = false
+		italic = true,
+		bold = true
 	}
 })
 -- to set background to full black -- needs to disable background tho
 local set_black_bg = function(group)
-  vim.api.nvim_set_hl(0, group, { bg = "#000000", ctermbg = 0 })
+	vim.api.nvim_set_hl(0, group, { bg = "#000000", ctermbg = 0 })
 end
 
 require("onedarkpro").setup({
@@ -104,7 +104,7 @@ require("onedarkpro").setup({
 		cursorline = false,  -- Use cursorline highlighting?
 		transparency = true, -- Use a transparent background?
 		terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
-		lualine_transparency = true, -- Center bar transparency?
+		lualine_transparency = false, -- Center bar transparency?
 		highlight_inactive_windows = true, -- When the window is out of focus, change the normal background?
 	}
 })
@@ -149,9 +149,9 @@ require('vscode').setup({
 	}
 })
 
--- vim.cmd.colorscheme "onedark"
+vim.cmd.colorscheme "onedark"
 -- vim.cmd.colorscheme "tokyonight"
-vim.cmd.colorscheme "rose-pine"
+-- vim.cmd.colorscheme "rose-pine"
 -- vim.cmd.colorscheme "vscode"
 -- vim.cmd.colorscheme "tokyodark"
 -- vim.cmd.colorscheme "habamax"

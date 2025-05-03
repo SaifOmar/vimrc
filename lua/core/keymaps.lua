@@ -86,6 +86,9 @@ vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.e
 	{ desc = "test the entire file" })
 vim.keymap.set('n', '<leader>to', '<CMD>NvimTreeToggle<CR>', { noremap = true });
 
+
+vim.api.nvim_set_keymap('n', '<Tab>', ':BufferNext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferPrevious<CR>', { noremap = true, silent = true })
 -- keep that here for now make a file for venv select later
 -- vim.keymap.set('n', '<leader>vv', ':VenvSelect<CR>',
 -- 	{ noremap = true, silent = true, desc = 'Select virtual environment' })

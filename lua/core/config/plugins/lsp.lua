@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 
 lspconfig.ts_ls.setup {
-	filetypes = { 'vue', 'javascript', 'javascriptreact', 'typescriptreact', 'typescript' }
+	filetypes = { 'javascript', 'javascriptreact', 'typescriptreact', 'typescript' }
 }
 
 
@@ -9,6 +9,37 @@ lspconfig.emmet_language_server.setup({
 	filetypes = { "javascriptreact", "html", "css", "sass", "scss", "less" },
 })
 
+if vim.fn.has("wsl") == 1 or vim.fn.has("unix") == 1 then
+	lspconfig.phpactor.setup {
+		root_dir = require('lspconfig').util.root_pattern(
+			"composer.json",
+			"package.json",
+			".git",
+			"*.php"
+		),
+		init_options = {
+			["language_server_phpstan.enabled"] = false,
+			["language_server_psalm.enabled"] = false,
+			["language_server.catch_errors"] = false, -- Disable diagnostics on update
+			["language_server.diagnostics_on_update"] = false, -- Disable diagnostics on update
+			["language_server.diagnostics_on_open"] = false,
+			["language_server.diagnostics_on_save"] = false, -- Disable diagnostics on save
+			["language_server.diagnostic_providers"] = {},
+			["code_transform.import_globals"] = true,
+			["indexer.include_patterns"] = {
+				"**/*.php",
+				"**/*.phtml",
+				"**/*.inc",
+				"**/*.module",
+				"**/*.install",
+				"**/*.theme",
+				"**/_ide_helper.php",
+				"**/_ide_helper_models.php",
+				"**/.phpstorm.meta.php"
+			},
+		},
+	}
+end
 
 lspconfig.gopls.setup({
 	settings = {
@@ -67,60 +98,6 @@ lspconfig.intelephense.setup {
 			},
 			telemetry = {
 				enable = false
-			}
-		}
-	}
-}
-
--- Phpactor configuration with diagnostics disabled but completion enabled
-lspconfig.phpactor.setup {
-	root_dir = require('lspconfig').util.root_pattern(
-		"composer.json",
-		"package.json",
-		".git",
-		"*.php"
-	),
-	init_options = {
-		["language_server_phpstan.enabled"] = false,
-		["language_server_psalm.enabled"] = false,
-		["language_server.catch_errors"] = false, -- Disable diagnostics on update
-		["language_server.diagnostics_on_update"] = false, -- Disable diagnostics on update
-		["language_server.diagnostics_on_open"] = false,
-		["language_server.diagnostics_on_save"] = false, -- Disable diagnostics on save
-		["language_server.diagnostic_providers"] = {},
-		["code_transform.import_globals"] = true,
-		["indexer.include_patterns"] = {
-			"**/*.php",
-			"**/*.phtml",
-			"**/*.inc",
-			"**/*.module",
-			"**/*.install",
-			"**/*.theme",
-			"**/_ide_helper.php",
-			"**/_ide_helper_models.php",
-			"**/.phpstorm.meta.php"
-		},
-	},
-}
-
-
-
-lspconfig.intelephense.setup {
-	root_dir = require('lspconfig').util.root_pattern(
-		"composer.json",
-		"package.json",
-		".git",
-		"*.php"
-	),
-	settings = {
-		intelephense = {
-			files = {
-				excludes = {
-					-- Critical for WSL/Low RAM
-					"**/vendor/**", -- PHP dependencies
-					"**/node_modules/**", -- JS dependencies
-					"**/storage/**", -- Laravel logs/cache
-				}
 			}
 		}
 	}

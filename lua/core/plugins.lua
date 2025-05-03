@@ -15,6 +15,8 @@ require("lazy").setup({
 		"lewis6991/gitsigns.nvim",
 	},
 
+	require('core.plugins.barber-nvim'),
+	require('core.plugins.noice'),
 	require('core.plugins.oil-nvim'),
 	require('core.plugins.copilot-chat'),
 	require('core.plugins.trouble'),
@@ -25,7 +27,6 @@ require("lazy").setup({
 	require('core.plugins.auto-session'),
 	require('core.plugins.harpoon'),
 	require('core.plugins.which-key'),
-	-- require('core.plugins.kulala-nvim'),
 	require("core.plugins.telescope"),
 	require("core.plugins.lau-line"),
 	require("core.plugins.buffer-line"),
@@ -41,10 +42,10 @@ require("lazy").setup({
 	require('core.plugins.nvim-tree'),
 	require('core.plugins.neo-test'),
 	-- require('core.plugins.neo-tree'),
+	-- require('core.plugins.kulala-nvim'),
 	require 'kickstart.plugins.lint',
 	require("kickstart.plugins.autopairs"),
 	-- require 'kickstart.plugins.indent_line',
-
 	{ "numToStr/Comment.nvim" },
 	{ "Bilal2453/luvit-meta",     lazy = true },
 	{ "akinsho/toggleterm.nvim",  version = "*",      config = true },

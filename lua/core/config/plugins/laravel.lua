@@ -326,7 +326,7 @@ end
 
 
 -- installs laravel ide helper
-M.get_laravel_ide_helper   = function()
+M.get_laravel_ide_helper      = function()
   local artisan = M.get_artisan_path()
   if not artisan then
     return
@@ -336,7 +336,7 @@ M.get_laravel_ide_helper   = function()
 end
 
 -- we are going to run the commands for laravel ide helper
-M.generate_ide_helper_file = function()
+M.generate_ide_helper_file    = function()
   if not M.get_artisan_path() then
     return
   end
@@ -344,7 +344,7 @@ M.generate_ide_helper_file = function()
   vim.cmd("terminal " .. cmd)
 end
 
-M.generate_models_helpers  = function()
+M.generate_models_helpers     = function()
   if not M.get_artisan_path() then
     return
   end
@@ -352,11 +352,28 @@ M.generate_models_helpers  = function()
   vim.cmd("terminal " .. cmd)
 end
 
+M.add_ide_helper_to_gitignore = function()
+  if not M.get_artisan_path() then
+    return
+  end
+  local cmd = "echo \"_ide_helper.php\" >> .gitignore  echo \"_ide_helper_models.php\" >> .gitignore"
+  vim.cmd("terminal " .. cmd)
+end
+
+M.generate_dot_env_file       = function()
+  if not M.get_artisan_path() then
+    return
+  end
+  local cmd = "cp .env.example .env"
+  vim.cmd("terminal " .. cmd)
+end
 -- User commands.
 vim.api.nvim_create_user_command("GetLIH", M.get_laravel_ide_helper, {})
 vim.api.nvim_create_user_command("Artisan", M.open_artisan_picker, {})
 vim.api.nvim_create_user_command("ArtisanRefresh", M.refresh_artisan_cache, {})
 vim.api.nvim_create_user_command("Laraveldirectory", M.go_to_laravel_directory, {})
+vim.api.nvim_create_user_command("GenerateDotEnvFile", M.generate_dot_env_file, {})
+vim.api.nvim_create_user_command("AddIdeHelperToGitIgnore", M.add_ide_helper_to_gitignore, {})
 
 vim.api.nvim_create_user_command("GenearteModelsHelpers", M.generate_models_helpers, {})
 vim.api.nvim_create_user_command("GenearteIdeHelper", M.generate_ide_helper_file, {})
