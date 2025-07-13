@@ -6,34 +6,33 @@ git clone https://github.com/SaifOmar/vimrc.git ~/.config/nvim
 ```
 
 ## Note for Windows users
-### DONT'T.
+### DON'T.
 
 ## Notes
 - This is my config and is in a way I like it.
-- I chaneded alot of defaults and keymaps to fit my preferences.
+- I changed a lot of defaults and keymaps to fit my preferences.
 - If you want to use it make sure you are willing to tinker around.
 
 ## Features
-[x] I use Neovim btw 
-[x] file explorer (telescope)
-[x] lsp 
-[x] linting 
-[x] custom dashboard
-[x] themes and ui 
-[x] http client
-[x] test runner
-[x] ai
-[x] terminal 
-[] dap 
+- [x] I use Neovim btw 
+- [x] File explorer (telescope)
+- [x] LSP (Language Server Protocol)
+- [x] Linting 
+- [x] Custom dashboard
+- [x] Themes and UI 
+- [x] HTTP client
+- [x] Test runner
+- [x] AI integration
+- [x] Terminal 
+- [ ] DAP (Debug Adapter Protocol)
+- And much more...
 
-- this and more 
+### Language Support
+- [x] JavaScript/TypeScript 
+- [x] Python 
+- [x] Go
+- [x] PHP support 
+- [x] Laravel support 
 
-
-#### Languages
-[x] js, ts 
-[x] python 
-[x] go
-[-] php support 
-[-] laravel support 
-
-
+## What's Next
+Check out the configuration files to see all the custom keymaps and settings. Feel free to modify anything to suit your workflow!
