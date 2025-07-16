@@ -6,6 +6,7 @@ return {
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		'V13Axel/neotest-pest',
+		'nvim-neotest/neotest-jest',
 	},
 	event = "BufReadPost",
 	enabled = true,
@@ -19,6 +20,7 @@ return {
 			},
 			adapters = {
 				require('neotest-pest'),
+				require('neotest-jest'),
 			}
 		})
 	end,

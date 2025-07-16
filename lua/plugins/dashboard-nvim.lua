@@ -10,7 +10,7 @@ return {
 				"   ╚════██║██╔══██║██║██╔══╝",
 				"███████║██║  ██║██║██║",
 				"╚══════╝╚═╝  ╚═╝╚═╝╚═╝",
-				"Vim is your daddy",
+				"Vim is your daddy.",
 			}
 			logo = vim.list_extend({ "", "" }, logo)
 			local builtin = require("telescope.builtin")

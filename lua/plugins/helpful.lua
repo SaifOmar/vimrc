@@ -51,7 +51,7 @@ return {
 			lint.linters_by_ft = {
 				javascript = { "eslint" },
 				typescript = { "eslint" },
-				lua = { "luacheck" },
+				-- lua = { "luacheck" },
 				python = { "flake8" },
 				php = { "phpcs" },
 				-- add more filetypes + linters as needed
