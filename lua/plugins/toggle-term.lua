@@ -3,7 +3,15 @@ return {
 	version = "*",
 	event = "VeryLazy", -- optional: lazy load at a safe time
 	config = function()
-		require("toggleterm").setup()
+		require("toggleterm").setup {
+			size = function(term)
+				if term.direction == "horizontal" then
+					return 8
+				elseif term.direction == "vertical" then
+					return vim.o.columns * 0.4
+				end
+			end,
+		}
 
 		local opts = { noremap = true, silent = true }
 

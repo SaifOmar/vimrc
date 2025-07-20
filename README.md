@@ -31,8 +31,8 @@ git clone https://github.com/SaifOmar/vimrc.git ~/.config/nvim
 - [x] JavaScript/TypeScript 
 - [x] Python 
 - [x] Go
-- [x] PHP support 
-- [x] Laravel support 
+- [-] PHP support 
+- [-] Laravel support 
 
 ## What's Next
 Check out the configuration files to see all the custom keymaps and settings. Feel free to modify anything to suit your workflow!
