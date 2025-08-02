@@ -92,7 +92,9 @@ return {
 			rust_analyzer = {},
 			-- volar = {},
 			tailwindcss = {},
-			ts_ls = {},
+			ts_ls = {
+				filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "html" },
+			},
 			emmet_language_server = {},
 			html = {},
 			cssls = {},

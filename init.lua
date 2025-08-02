@@ -2,9 +2,10 @@ require "options"
 require "mappings"
 require "autocmds"
 
+local uv = vim.uv or vim.loop
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-if not vim.uv.fs_stat(lazypath) then
+if not uv.fs_stat(lazypath) then
 	local repo = "https://github.com/folke/lazy.nvim.git"
 	local out = vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
 	if vim.v.shell_error ~= 1 then
@@ -42,11 +43,11 @@ require("lazy").setup({
 })
 
 local function require_all_from(dir)
-	local handle = vim.uv.fs_scandir(vim.fn.stdpath("config") .. "/lua/" .. dir)
+	local handle = uv.fs_scandir(vim.fn.stdpath("config") .. "/lua/" .. dir)
 	if not handle then return end
 
 	while true do
-		local name, type = vim.uv.fs_scandir_next(handle)
+		local name, type = uv.fs_scandir_next(handle)
 		if not name then break end
 
 		if type == "file" and name:sub(-4) == ".lua" then

@@ -33,7 +33,7 @@ return {
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
-			json = { "prettier" },
+			json = { "prettierd" },
 			blade = {
 				"blade-formatter" -- Try blade-formatter instead of prettier
 				-- Fallback to prettier if blade-formatter doesn't work
@@ -48,8 +48,8 @@ return {
 				-- 	}
 				-- }
 			},
-			javascript = { "prettier", "prettierd", stop_after_first = true },
-			typescript = { "prettier", "prettierd", stop_after_first = true },
+			javascript = { "prettierd", "prettier", stop_after_first = true },
+			typescript = { "prettierd", "prettier", stop_after_first = true },
 			python = { "black", stop_after_first = true },
 
 		},

@@ -7,21 +7,22 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		'V13Axel/neotest-pest',
 		'nvim-neotest/neotest-jest',
+		-- 'olimorris/neotest-phpunit'
 	},
-	event = "BufReadPost",
+	event = "VeryLazy",
 	enabled = true,
 	config = function()
 		require('neotest').setup({
-			discovery = {
-				concurrent = 0
-			}, -- Reduce from default 24
-			running = {
-				concurrent = false
-			},
 			adapters = {
 				require('neotest-pest'),
-				require('neotest-jest'),
+				-- require('neotest-jest'),
+				-- require('neotest-phpunit'),
 			}
 		})
+
+		vim.keymap.set('n', '<leader>tn', function() require('neotest').run.run() end,
+			{ desc = "test the nearest test" })
+		vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.expand('%')) end,
+			{ desc = "test the entire file" })
 	end,
 }

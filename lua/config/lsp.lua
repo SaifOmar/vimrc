@@ -1,13 +1,5 @@
 -- local lspconfig = require('lspconfig')
 --
--- -- lspconfig.ts_ls.setup {
--- -- 	filetypes = { 'javascript', 'javascriptreact', 'typescriptreact', 'typescript' }
--- -- }
---
---
--- -- lspconfig.emmet_language_server.setup({
--- -- 	filetypes = { "javascriptreact", "html", "css", "sass", "scss", "less" },
--- -- })
 --
 -- lspconfig.phpactor.setup {
 -- 	root_dir = require('lspconfig').util.root_pattern(
@@ -39,25 +31,14 @@
 -- 	},
 -- }
 --
--- lspconfig.gopls.setup({
--- 	settings = {
--- 		gopls = {
--- 			analyses = {
--- 				unusedparams = true,
--- 			},
--- 			staticcheck = true,
--- 			gofumpt = true,
--- 		},
--- 	},
--- })
 -- -- Intelephense configuration with diagnostics enabled
 -- lspconfig.intelephense.setup {
--- 	root_dir = require('lspconfig').util.root_pattern(
--- 		"composer.json",
--- 		"package.json",
--- 		".git",
--- 		"*.php"
--- 	),
+-- 	-- root_dir = require('lspconfig').util.root_pattern(
+-- 	-- 	"composer.json",
+-- 	-- 	"package.json",
+-- 	-- 	".git",
+-- 	-- 	"*.php"
+-- 	-- ),
 -- 	settings = {
 -- 		intelephense = {
 -- 			files = {
@@ -66,10 +47,6 @@
 -- 					"*.php", "*.phtml", "*.inc", "*.module", "*.install", "*.theme",
 -- 					"_ide_helper.php", "_ide_helper_models.php", ".phpstorm.meta.php"
 -- 				},
--- 			},
--- 			environment = {
--- 				phpVersion = '8.1.0',
--- 				includePaths = { './vendor' }
 -- 			},
 -- 			stubs = {
 -- 				"apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "ctype", "curl", "date",

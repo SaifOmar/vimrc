@@ -1,6 +1,7 @@
 return {
 	'romgrk/barbar.nvim',
 	event = "BufWinEnter",
+	enabled = false,
 	dependencies = {
 		'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
 		'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
@@ -8,7 +9,7 @@ return {
 	init = function() vim.g.barbar_auto_setup = false end,
 	opts = {
 		animation = false, -- Disable animations for simplicity
-		auto_hide = false, -- Always show bufferline
+		auto_hide = true, -- Always show bufferline
 		tabpages = true, -- Focus on buffers, not tabpages
 		icons = {
 			buffer_index = false,

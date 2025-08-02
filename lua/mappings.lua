@@ -81,14 +81,14 @@ vim.keymap.set('v', '^', 'g^', { noremap = true, desc = 'Move to first non-blank
 vim.keymap.set('v', '0', 'g0', { noremap = true, desc = 'Move to start of visual line' })
 
 -- neo test custom keymaps
-vim.keymap.set('n', '<leader>tn', function() require('neotest').run.run() end, { desc = "test the nearest test" })
-vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.expand('%')) end,
-	{ desc = "test the entire file" })
+-- vim.keymap.set('n', '<leader>tn', function() require('neotest').run.run() end, { desc = "test the nearest test" })
+-- vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.expand('%')) end,
+-- { desc = "test the entire file" })
 vim.keymap.set('n', '<leader>to', '<CMD>NvimTreeToggle<CR>', { noremap = true });
 
 
-vim.api.nvim_set_keymap('n', '<Tab>', ':BufferNext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-Tab>', ':BufferPrevious<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Tab>', ':bNext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
 -- keep that here for now make a file for venv select later
 -- vim.keymap.set('n', '<leader>vv', ':VenvSelect<CR>',
 -- 	{ noremap = true, silent = true, desc = 'Select virtual environment' })

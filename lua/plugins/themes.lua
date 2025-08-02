@@ -11,16 +11,17 @@ return {
 					shade = "dark",
 					percentage = 0.15
 				},
-				disable_background = true,
-				variant = "main",
+				-- disable_background = true,
+				variant = "dawn",
 				styles = {
-					transparency = true,
+					-- transparency = true,
 					italic = true,
 					bold = true
 				}
 			})
 		end
 	},
+	{ 'projekt0n/github-nvim-theme', name = 'github-theme' },
 	{
 		"Mofiqul/vscode.nvim",
 		config = function()
@@ -30,7 +31,7 @@ return {
 				-- style = 'light'
 
 				-- Enable transparent background
-				transparent = true,
+				-- transparent = true,
 
 				-- Enable italic comment
 				italic_comments = false,
@@ -39,7 +40,7 @@ return {
 				underline_links = true,
 
 				-- Disable nvim-tree background color
-				disable_nvimtree_bg = true,
+				-- disable_nvimtree_bg = true,
 
 				-- Override colors (see ./lua/vscode/colors.lua)
 				color_overrides = {
@@ -86,7 +87,7 @@ return {
 				},
 				options = {
 					cursorline = false, -- Use cursorline highlighting?
-					transparency = true, -- Use a transparent background?
+					-- transparency = true, -- Use a transparent background?
 					terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
 					lualine_transparency = true, -- Center bar transparency?
 					highlight_inactive_windows = true, -- When the window is out of focus, change the normal background?
@@ -100,7 +101,7 @@ return {
 		config = function()
 			require("catppuccin").setup({
 				flavour = "macchiato", -- latte, frappe, macchiato, mocha
-				transparent_background = false,
+				-- transparent_background = false,
 			})
 		end
 	},
