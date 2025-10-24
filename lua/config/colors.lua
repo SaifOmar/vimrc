@@ -7,10 +7,11 @@ local function parse_theme(content)
 	return theme
 end
 
-
 local function apply_theme()
 	local f = io.open(theme_file, "r")
-	if not f then return end
+	if not f then
+		return
+	end
 	local content = f:read("*a")
 	f:close()
 	if content then
@@ -26,7 +27,7 @@ local function apply_theme()
 			vim.notify("Could not find theme resorting to default", vim.log.levels.INFO)
 		end
 	end
-	require("config.transparency")
+	require("plugin.after.transparency")
 end
 
 apply_theme()

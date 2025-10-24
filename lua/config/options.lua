@@ -6,6 +6,18 @@ vim.g.maplocalleader = " "
 
 vim.opt.shortmess:append("sI")
 
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
+vim.opt.relativenumber = true
+vim.g.lazyvim_prettier_needs_config = true
+vim.g.lazyvim_picker = "telescope"
+-- vim.opt.guicursor = "i:bar"
+vim.g.neovide_opacity = 0.5
+vim.o.guifont = "JetBrainsMono Nerd Font"
+vim.o.cursorline = false
+
+vim.g.lazyvim_check_order = false
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 vim.opt.number = true
@@ -81,7 +93,7 @@ vim.diagnostic.config({
 	underline = true, -- Underline errors
 	update_in_insert = true, -- Update diagnostics while in insert mode
 	severity_sort = true,
-	float = true
+	float = true,
 })
 
 ShowDignostics = function()

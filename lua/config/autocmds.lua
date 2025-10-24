@@ -1,3 +1,37 @@
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = { "javascript", "javascriptreact" },
+-- 	callback = function()
+-- 		vim.opt_local.shiftwidth = 6
+-- 		vim.opt_local.tabstop = 6
+-- 		vim.opt_local.softtabstop = 6
+-- 		vim.opt_local.expandtab = true
+-- 	end,
+-- })
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = { "php", "blade" },
+-- 	callback = function()
+-- 		vim.lsp.start({
+-- 			name = "laravel-ls",
+-- 			-- cmd = { vim.fn.expand("~") .. "/go/bin/laravel-ls2" },
+-- 			cmd = { vim.fn.expand("~") .. "/go/bin/laravel-ls" },
+--
+-- 			-- cmd = { vim.fn.expand("~") .. "/g" },
+-- 			-- if you want to recompile everytime
+-- 			-- the language server is started.
+-- 			-- Uncomment this line instead
+-- 			-- cmd = { vim.fn.expand("~") .. "/go/bin/laravel-ls/start.sh" },
+-- 			-- cmd = { '/path/to/laravel-ls/start.sh' },
+-- 			root_dir = vim.fn.getcwd(),
+-- 		})
+-- 	end
+-- })
+
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+	callback = function()
+		vim.hl.on_yank({ higroup = "Visual", timeout = 150 })
+	end,
+})
+
 local OpenCheatSheet = function()
 	if vim.fn.has("win32") == 1 then
 		vim.notify("Why are you using windows you little sucker", vim.log.levels.ERROR)
@@ -33,7 +67,7 @@ local OpenCheatSheet = function()
 	return buf
 end
 local Plan = function()
-	local cwd      = vim.fn.getcwd()
+	local cwd = vim.fn.getcwd()
 	local filePath = cwd .. "/.plan.md"
 
 	if vim.fn.filereadable(filePath) == 0 then
@@ -46,10 +80,7 @@ local Plan = function()
 		end)
 
 		if not ok then
-			vim.notify(
-				"Error creating " .. filePath .. ": " .. tostring(err),
-				vim.log.levels.ERROR
-			)
+			vim.notify("Error creating " .. filePath .. ": " .. tostring(err), vim.log.levels.ERROR)
 			return
 		end
 
@@ -61,10 +92,7 @@ local Plan = function()
 		buf = vim.fn.bufadd(filePath)
 	end)
 	if not ok or not buf then
-		vim.notify(
-			"Error adding buffer for " .. filePath .. ": " .. tostring(err),
-			vim.log.levels.ERROR
-		)
+		vim.notify("Error adding buffer for " .. filePath .. ": " .. tostring(err), vim.log.levels.ERROR)
 		return
 	end
 
@@ -72,22 +100,18 @@ local Plan = function()
 		vim.api.nvim_set_current_buf(buf)
 	end)
 	if not ok then
-		vim.notify(
-			"Error setting buffer for " .. filePath .. ": " .. tostring(err),
-			vim.log.levels.ERROR
-		)
+		vim.notify("Error setting buffer for " .. filePath .. ": " .. tostring(err), vim.log.levels.ERROR)
 		return
 	end
 
 	return buf
 end
 
-
 local transparent = false
 local ToggleTransparency = function()
 	transparent = not transparent
 	if transparent then
-		vim.cmd [[
+		vim.cmd([[
       hi Normal guibg=NONE ctermbg=NONE
       hi NormalNC guibg=NONE
       hi Pmenu guibg=NONE
@@ -97,14 +121,13 @@ local ToggleTransparency = function()
       hi SignColumn guibg=NONE
       hi LineNr guibg=NONE
       hi EndOfBuffer guibg=NONE
-    ]]
+    ]])
 		vim.notify("✅ Transparency enabled")
 	else
 		vim.cmd.colorscheme(vim.g.colors_name)
 		vim.notify("🚫 Transparency disabled")
 	end
 end
-
 
 -- local OpenWeztermConfig = function()
 -- 	local path = ''
@@ -137,25 +160,25 @@ local LightMode = function()
 		dim_inactive = {
 			enabled = true,
 			shade = "dark",
-			percentage = 0.15
+			percentage = 0.15,
 		},
 		disable_background = false,
 		variant = "dawn",
 		styles = {
 			-- transparency = false,
 			italic = true,
-			bold = true
-		}
+			bold = true,
+		},
 	})
-	vim.cmd.colorscheme "rose-pine"
+	vim.cmd.colorscheme("rose-pine")
 end
 
 local ZenMode = function()
-	vim.cmd.colorscheme "rose-pine"
+	vim.cmd.colorscheme("rose-pine")
 end
 vim.api.nvim_create_user_command("Zen", ZenMode, {})
 local UnZen = function()
-	vim.cmd.colorscheme "onedark"
+	vim.cmd.colorscheme("onedark")
 end
 
 vim.api.nvim_create_user_command("ToggleTransparency", ToggleTransparency, {})
@@ -170,8 +193,8 @@ vim.api.nvim_create_user_command("RestScratchpad", require("kulala").scratchpad,
 
 local map = vim.keymap.set
 
-
 vim.keymap.set("n", "<leader>ut", ToggleTransparency, { desc = "Toggle Transparency" })
 map("n", "<leader>ks", "<cmd>Rest<CR>")
 map("n", "<leader>ka", "<cmd>RestAll<CR>")
 map("n", "<leader>kb", "<cmd>RestScrathPad<CR>")
+require("config.laravel")

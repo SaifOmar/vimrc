@@ -11,10 +11,10 @@ return {
 					shade = "dark",
 					percentage = 0.15
 				},
-				-- disable_background = true,
+				disable_background = true,
 				variant = "dawn",
 				styles = {
-					-- transparency = true,
+					transparency = true,
 					italic = true,
 					bold = true
 				}
